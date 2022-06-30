@@ -1,4 +1,5 @@
 import os
+import subprocess
 from tkinter import *
 from functools import partial
 import tkinter.font as font
@@ -9,10 +10,14 @@ from dotenv import load_dotenv
 import sys
 import shutil
 import urllib.request
+import ast
+
+'''
+ajouter un bouton paramètre pour les arg jvm
+'''
 
 
 def main():
-
     def update_forge(arg):
         forge_update_text = PhotoImage(file="assets/forge_update.png")
         image5 = cancan.create_image(400, 200, image=forge_update_text)
@@ -109,14 +114,35 @@ def main():
                     options = {"username": login_data["name"],
                                "uuid": login_data["id"],
                                "token": login_data["access_token"],
+                               "executablePath": "javaw",
+                               "launcherName": 'KipikCube Launcher',
+                               "server": "kipikcube.tk"
                                }
+
+                    command = minecraft_launcher_lib.command.get_minecraft_command(full_name_forge_version,
+                                                                                   minecraft_directory,
+                                                                                   options)
+                    if statu == 1:
+                        with open("config", "w") as obj:
+                            obj.write("REMEMBER=1\n")
+                            obj.write(f"COMMAND={command}")
+                            obj.close()
 
                     print(f"auth_code : {auth_code}")
                     print(f"login_data : {login_data}")
                     print(f"options : {options}")
+                    print(f'command  : {command}')
+
+                    subprocess.call(command)
+                    sys.exit(0)
 
         elif remember == 1:
-            pass
+            window.withdraw()
+            command = os.getenv("COMMAND")
+            command.split(",")
+            command = ast.literal_eval(command)
+            subprocess.call(command)
+            sys.exit(0)
 
     load_dotenv(dotenv_path="config")
     mods_list = ['cgm-1.1.0-1.16.5.jar', 'obfuscate-0.6.2-1.16.3.jar']
