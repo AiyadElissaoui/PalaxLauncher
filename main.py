@@ -156,9 +156,9 @@ def main():
     lien_discord = r"https://discord.gg/TX2djczBa6"
 
     # client id ; secret ; uri de redirection de l'app azure
-    client_id = "c8fd4913-e364-48dc-81c7-b6751a021e5d"
-    secret = "ZRa7Q~wdq~0SGPuP4m5yyHVVSvrgk674xl5Lq"
-    redirect_url = "https://contoso.com/kipikcube"
+    client_id = ""
+    secret = ""
+    redirect_url = ""
 
     window = Tk()
     window.title(launcher_title)
