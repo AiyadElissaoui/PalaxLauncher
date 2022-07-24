@@ -24,14 +24,14 @@ def main():
         window.update_idletasks()
         # télécharge la version de forge
         version = arg
-        print("The forge version is not downloaded")
-        print(f"Forge download in progress...({version})")
-        print("This may take several minutes.")
+        print("forge n'est pas installé")
+        print(f"Forge est en cours d'instalation...({version})")
+        print("ça peut prendre du temps, Veillez Patienter...")
         minecraft_launcher_lib.forge.install_forge_version(version, minecraft_directory)
         version = minecraft_launcher_lib.forge.find_forge_version(vanilla_version)
         full_name_forge_version = version.replace("-", "-forge-")
         cancan.delete(image5)
-        print("Update completed")
+        print("Mise à jour réusite")
 
     def widget_place():
         cancan.delete(image2)
@@ -74,9 +74,9 @@ def main():
 
         # check if mods are already downloaded
         if mods_list == fichiers:
-            print("already downloaded mods")
+            print("Les Mods Sont Dejà installé")
         else:
-            print("downloading mods...")
+            print("Téléchargement Des mods...")
             # obfuscate
             url = 'https://4d2a096c-ed43-4627-a525-cdcf1eacad66.usrfiles.com/archives' \
                   '/4d2a09_d71ca86687604f7fb2f4bb2416db4082.jar '
@@ -145,14 +145,13 @@ def main():
             sys.exit(0)
 
     load_dotenv(dotenv_path="config")
-    mods_list = ['cgm-1.1.0-1.16.5.jar', 'obfuscate-0.6.2-1.16.3.jar']
-    vanilla_version = "1.16.5"
-    launcher_title = "KipikCube Launcher"
+    mods_list = ['palamod0.jar', 'palamod1.jar','palamod2.jar', 'palamod3.jar','palamod4.jar', 'palamod5.jar','palamod6.jar', 'palamod7.jar','palamod8.jar', 'palamod9.jar','palamod10.jar', 'palamod11.jar','palamod12.jar', 'palamod13.jar','palamod14.jar', 'palamod15.jar']
+    vanilla_version = "1.18.2"
+    launcher_title = "Pala Launcher"
     dimension = "720x480"
 
-    lien_twitch = r"https://www.twitch.tv/toniocraft07"
-    lien_youtube = r"https://www.youtube.com/channel/UCyVYspauqSCmLuqtKdMbvZw"
-    lien_site = r"https://toniocraft.wixsite.com/kipikcube/"
+    lien_twiter = r"https://www.twitch.tv/toniocraft07"
+    lien_tuto = r"https://toniocraft.wixsite.com/kipikcube/"
     lien_discord = r"https://discord.gg/TX2djczBa6"
 
     # client id ; secret ; uri de redirection de l'app azure
@@ -205,10 +204,6 @@ def main():
     photo_discord = ImageTk.PhotoImage(image_discord)
     a = Button(window, image=photo_discord, command=partial(on_click, lien_discord), borderwidth=0)
 
-    image_youtube = Image.open("assets/youtube.png")
-    photo_youtube = ImageTk.PhotoImage(image_youtube)
-    b = Button(window, image=photo_youtube, command=partial(on_click, lien_youtube), borderwidth=0)
-
     image_twitch = Image.open("assets/twitch.png")
     photo_twitch = ImageTk.PhotoImage(image_twitch)
     c = Button(window, image=photo_twitch, command=partial(on_click, lien_twitch), borderwidth=0)
@@ -218,12 +213,12 @@ def main():
     d = Button(window, image=photo_web, command=partial(on_click, lien_site), borderwidth=0)
 
     # bouton de déconnection
-    logout_button = Button(window, text="SE DÉCONNECTER", width=15, height=1, command=logout, bg='red', borderwidth=0)
+    logout_button = Button(window, text="Se Déconnecter", width=15, height=1, command=logout, bg='red', borderwidth=0)
     # appliquer la police à l'étiquette du bouton
     logout_button['font'] = f2
 
     # créer le texte avec l'hyper lien
-    link = Label(window, text="Cliquer pour ouvrir le lien de connexion", fg="blue", cursor="hand2")
+    link = Label(window, text="S'Inscrire ", fg="black", cursor="hand2")
 
     # image texte 'merci de rentrer le code de vérification'
     error_code_text = ImageTk.PhotoImage(Image.open("assets/erreur_code.png"))
